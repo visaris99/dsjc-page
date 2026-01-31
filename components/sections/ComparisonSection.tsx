@@ -9,24 +9,22 @@ const comparisonData = {
     title: '일반 대행사',
     subtitle: '기존 방식',
     items: [
-      { icon: '📊', text: '월 1회 리포트', detail: '수동 데이터 수집' },
-      { icon: '🎯', text: '경험 기반 타겟팅', detail: '감에 의존하는 설정' },
-      { icon: '💰', text: '고정 수수료', detail: '성과와 무관한 비용' },
-      { icon: '📈', text: 'ROAS 150-200%', detail: '업계 평균 수준' },
-      { icon: '⏰', text: '주간 커뮤니케이션', detail: '느린 피드백 루프' },
-      { icon: '🔧', text: '수동 최적화', detail: '담당자 역량에 의존' },
+      { icon: '📦', text: '광고 운영만', detail: '서비스 범위' },
+      { icon: '👥', text: '담당자 여러 명, 떠넘기기', detail: '커뮤니케이션' },
+      { icon: '📊', text: '월 1회 PDF 리포트', detail: '리포팅' },
+      { icon: '🔧', text: '세팅 후 방치', detail: '최적화' },
+      { icon: '💰', text: '고정 수수료', detail: '비용 구조' },
     ],
   },
   dsjc: {
     title: 'DS&JC',
-    subtitle: '데이터 드리븐',
+    subtitle: '원스톱 솔루션',
     items: [
-      { icon: '📊', text: '실시간 대시보드', detail: '24/7 자동 모니터링' },
-      { icon: '🎯', text: 'AI 기반 타겟팅', detail: '머신러닝 자동 최적화' },
-      { icon: '💰', text: '성과 연동 수수료', detail: '결과에 따른 합리적 비용' },
-      { icon: '📈', text: 'ROAS 300%+', detail: '업계 최고 수준 보장' },
-      { icon: '⏰', text: '실시간 커뮤니케이션', detail: '즉각적인 대응 체계' },
-      { icon: '🔧', text: 'AI 자동 최적화', detail: '24시간 무중단 최적화' },
+      { icon: '🚀', text: '페이지 제작 → SEO → 광고 → 관리 원스톱', detail: '서비스 범위' },
+      { icon: '🤝', text: '한 팀이 처음부터 끝까지', detail: '커뮤니케이션' },
+      { icon: '📊', text: '실시간 대시보드 + 주간 인사이트', detail: '리포팅' },
+      { icon: '🔄', text: '지속적 A/B 테스트 & 개선', detail: '최적화' },
+      { icon: '💰', text: '성과 연동 옵션 제공', detail: '비용 구조' },
     ],
   },
 };
@@ -74,12 +72,10 @@ export default function ComparisonSection() {
             Why DS&JC?
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-display-md font-bold mb-4">
-            <span className="text-foreground-muted">일반 대행사와</span>{' '}
-            <span className="gradient-text">DS&JC</span>
-            <span className="text-foreground-muted">의 차이</span>
+            왜 <span className="gradient-text">DS&JC</span>인가요?
           </h2>
           <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
-            데이터 기반의 체계적인 접근 방식이 만드는 결과의 차이를 확인하세요.
+            일반 대행사와의 차이를 확인하세요.
           </p>
         </motion.div>
 
@@ -200,15 +196,21 @@ export default function ComparisonSection() {
           className="text-center mt-16"
         >
           <p className="text-foreground-muted mb-6">
-            아직도 고민 중이신가요? <strong className="text-foreground">무료 진단</strong>으로 현재 광고 효율을 점검해 보세요.
+            아직도 고민 중이신가요? <strong className="text-foreground">편하게 문의</strong>해 주세요.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="btn-primary text-lg"
+          <a
+            href="https://t.me/DS_ad26"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            무료 광고 진단 받기
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-primary text-lg"
+            >
+              문의하기
+            </motion.button>
+          </a>
         </motion.div>
       </div>
     </section>

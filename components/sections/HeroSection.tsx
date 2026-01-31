@@ -33,7 +33,7 @@ const floatVariants = {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
       {/* Background gradient blobs */}
       <div className="bg-gradient-blob" />
 
@@ -77,11 +77,9 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="text-4xl sm:text-5xl lg:text-display-lg font-bold leading-tight"
             >
-              광고비는 줄이고,
+              랜딩페이지 제작부터 광고 성과까지
               <br />
-              <span className="gradient-text">매출은 극대화</span>하는
-              <br />
-              퍼포먼스 마케팅
+              <span className="gradient-text">한 팀이 끝까지</span> 책임집니다
             </motion.h1>
 
             <motion.p
@@ -91,10 +89,9 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="text-lg text-foreground-muted max-w-lg leading-relaxed"
             >
-              DS애드와 제이씨마케팅이 함께합니다.
+              SEO 최적화 → 광고 전략 설계 → 운영·관리까지
               <br />
-              실시간 데이터 분석과 AI 기반 최적화로
-              <strong className="text-foreground"> ROAS 300% 이상</strong> 달성을 약속드립니다.
+              흩어진 마케팅, <strong className="text-foreground">DS&JC가 하나로 연결</strong>합니다.
             </motion.p>
 
             <motion.div
@@ -104,20 +101,28 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="flex flex-wrap gap-4"
             >
-              <Button
-                variant="primary"
-                size="lg"
-                icon={
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                }
+              <a
+                href="https://t.me/DS_ad26"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                무료 상담 신청
-              </Button>
-              <Button variant="secondary" size="lg">
-                서비스 소개서
-              </Button>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  }
+                >
+                  문의하기
+                </Button>
+              </a>
+              <a href="/service">
+                <Button variant="secondary" size="lg">
+                  서비스 소개서
+                </Button>
+              </a>
             </motion.div>
 
             {/* Trust badges */}
@@ -130,17 +135,17 @@ export default function HeroSection() {
             >
               <div className="flex items-center gap-2">
                 <span className="text-3xl font-bold text-brand-primary">500+</span>
-                <span className="text-sm text-foreground-muted">광고주<br/>파트너</span>
-              </div>
-              <div className="w-px h-10 bg-white/10" />
-              <div className="flex items-center gap-2">
-                <span className="text-3xl font-bold text-brand-primary">98%</span>
-                <span className="text-sm text-foreground-muted">고객<br/>만족도</span>
+                <span className="text-sm text-foreground-muted">누적<br/>프로젝트</span>
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div className="flex items-center gap-2">
                 <span className="text-3xl font-bold text-brand-primary">15년</span>
-                <span className="text-sm text-foreground-muted">업계<br/>경력</span>
+                <span className="text-sm text-foreground-muted">통합<br/>경력</span>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-bold text-brand-primary">98%</span>
+                <span className="text-sm text-foreground-muted">재계약<br/>률</span>
               </div>
             </motion.div>
           </div>

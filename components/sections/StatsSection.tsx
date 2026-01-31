@@ -7,26 +7,26 @@ const stats = [
   {
     value: 500,
     suffix: '+',
-    label: '광고주 파트너',
+    label: '누적 프로젝트',
     description: '다양한 업종의 고객사',
-  },
-  {
-    value: 300,
-    suffix: '%',
-    label: '평균 ROAS',
-    description: '업계 평균 대비 2배',
   },
   {
     value: 15,
     suffix: '년',
-    label: '업계 경력',
+    label: '통합 경력',
     description: '축적된 노하우',
   },
   {
     value: 98,
     suffix: '%',
-    label: '고객 만족도',
-    description: '높은 재계약률',
+    label: '재계약률',
+    description: '높은 고객 만족도',
+  },
+  {
+    value: 287,
+    suffix: '%',
+    label: '평균 ROAS',
+    description: '검증된 성과',
   },
 ];
 
