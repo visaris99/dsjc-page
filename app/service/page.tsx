@@ -36,7 +36,7 @@ const steps = [
       '전환 추적 태그 설치 (GTM, 픽셀, API 연동)',
     ],
     result: '모든 채널에서 검색되고 추적되는 마케팅 인프라',
-    color: 'chart-blue',
+    color: 'brand-highlight',
   },
   {
     number: '03',
@@ -66,7 +66,7 @@ const steps = [
       '월간 성과 리뷰 미팅',
     ],
     result: '계속 개선되는 광고, 꾸준히 오르는 ROAS',
-    color: 'chart-purple',
+    color: 'brand-primary',
   },
 ];
 
@@ -95,110 +95,67 @@ const caseStudies = [
   },
 ];
 
-function StepSection({ step, index }: { step: typeof steps[0]; index: number }) {
+function StepSection({ step }: { step: typeof steps[0] }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const isEven = index % 2 === 0;
 
   return (
-    <section ref={ref} className="py-16 lg:py-24">
-      <div className="section-container">
-        <div className={`grid lg:grid-cols-2 gap-12 items-center ${isEven ? '' : 'lg:flex-row-reverse'}`}>
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className={isEven ? '' : 'lg:order-2'}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <span
-                className="text-5xl font-bold opacity-20"
-                style={{ color: `var(--${step.color})` }}
-              >
-                {step.number}
-              </span>
+    <section ref={ref} className="py-16 lg:py-20">
+      <div className="section-container max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Step Number & Title */}
+          <div className="flex items-center gap-4 mb-6">
+            <span
+              className="text-6xl font-bold"
+              style={{ color: `var(--${step.color})` }}
+            >
+              {step.number}
+            </span>
+            <div>
               <span className="text-sm uppercase tracking-wider text-foreground-subtle">STEP {step.number}</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                {step.title}
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              {step.title}
-            </h2>
-            <p className="text-lg text-foreground-muted mb-8 whitespace-pre-line leading-relaxed">
-              {step.description}
-            </p>
+          </div>
 
-            {/* Features */}
-            <ul className="space-y-3 mb-6">
-              {step.features.map((feature, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.2 + i * 0.1 }}
-                  className="flex items-start gap-3"
-                >
-                  <svg
-                    className="w-5 h-5 mt-0.5 flex-shrink-0"
-                    style={{ color: `var(--${step.color})` }}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-foreground-muted">{feature}</span>
-                </motion.li>
-              ))}
-            </ul>
+          <p className="text-lg text-foreground-muted mb-8 whitespace-pre-line leading-relaxed">
+            {step.description}
+          </p>
 
-            {step.subFeatures && (
-              <p className="text-sm text-foreground-subtle mb-6 italic">
-                {step.subFeatures}
-              </p>
-            )}
-          </motion.div>
-
-          {/* Result Card */}
-          <motion.div
-            initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className={isEven ? '' : 'lg:order-1'}
-          >
-            <GlassPanel variant="glow" className="p-8 relative overflow-hidden">
-              {/* 상승 화살표 배경 아이콘 */}
-              <div className="absolute top-4 right-4 opacity-10">
+          {/* Features */}
+          <ul className="space-y-3">
+            {step.features.map((feature, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.2 + i * 0.1 }}
+                className="flex items-start gap-3"
+              >
                 <svg
-                  className="w-24 h-24"
+                  className="w-5 h-5 mt-0.5 flex-shrink-0"
                   style={{ color: `var(--${step.color})` }}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-              </div>
-              <div className="text-center relative z-10">
-                <div
-                  className="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, var(--${step.color}) 0%, var(--${step.color}) 100%)`, opacity: 0.2 }}
-                >
-                  <span className="text-4xl font-bold" style={{ color: `var(--${step.color})` }}>
-                    {step.number}
-                  </span>
-                </div>
-                <p className="text-sm text-foreground-subtle mb-2">결과물</p>
-                <p className="text-xl font-semibold text-foreground">{step.result}</p>
-                {/* 성과 강조 아이콘 */}
-                <div className="mt-4 flex items-center justify-center gap-1" style={{ color: `var(--${step.color})` }}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm font-medium">성과 보장</span>
-                </div>
-              </div>
-            </GlassPanel>
-          </motion.div>
-        </div>
+                <span className="text-foreground-muted">{feature}</span>
+              </motion.li>
+            ))}
+          </ul>
+
+          {step.subFeatures && (
+            <p className="text-sm text-foreground-subtle mt-6 italic">
+              {step.subFeatures}
+            </p>
+          )}
+        </motion.div>
       </div>
     </section>
   );
@@ -327,8 +284,8 @@ export default function ServicePage() {
       </section>
 
       {/* Step Sections */}
-      {steps.map((step, index) => (
-        <StepSection key={step.number} step={step} index={index} />
+      {steps.map((step) => (
+        <StepSection key={step.number} step={step} />
       ))}
 
       {/* Case Studies Section */}

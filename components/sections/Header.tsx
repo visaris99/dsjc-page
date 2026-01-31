@@ -17,8 +17,8 @@ export default function Header() {
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="/#services" className="text-foreground-muted hover:text-foreground transition-colors">
-            서비스
+          <a href="/" className="text-foreground-muted hover:text-foreground transition-colors">
+            홈
           </a>
           <a href="/service" className="text-foreground-muted hover:text-foreground transition-colors">
             상세 서비스
