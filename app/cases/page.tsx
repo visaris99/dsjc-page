@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 import GlassPanel from '@/components/ui/GlassPanel';
 import Button from '@/components/ui/Button';
 import Header from '@/components/sections/Header';
@@ -79,10 +79,10 @@ const cases = [
   {
     id: 4,
     image: '/case_4.png',
-    tags: ['투자', '선물거래', 'CPA 마케팅', '리딩방'],
-    title: '국내선물 · 해외선물',
+    tags: ['투자', '투자자문', 'CPA 마케팅'],
+    title: '투자자문업',
     subtitle: '투자 상담 리드 수집',
-    background: '선물 투자 리딩 서비스의 신규 회원 모집 프로젝트. 국내선물(코스피200, 미니선물)과 해외선물(나스닥, 골드 등) 각각의 타겟층에 맞는 차별화된 광고 전략 수립.',
+    background: '투자 자문 신규 회원 모집 프로젝트. 국내선물(코스피200, 미니선물)과 해외선물(나스닥, 골드 등) 각각의 타겟층에 맞는 차별화된 광고 전략 수립.',
     strategy: [
       '국내선물: 주식 경험 있는 40~60대, 안정적 수익 추구',
       '해외선물: 공격적 투자 성향 30~50대, 고수익 추구',
@@ -103,7 +103,7 @@ const cases = [
   },
 ];
 
-function CaseSection({ caseData, index }: { caseData: typeof cases[0]; index: number }) {
+function CaseSection({ caseData, index, onImageClick }: { caseData: typeof cases[0]; index: number; onImageClick: (image: string, title: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const isEven = index % 2 === 0;
@@ -122,14 +122,19 @@ function CaseSection({ caseData, index }: { caseData: typeof cases[0]; index: nu
             transition={{ duration: 0.8 }}
             className={!isEven ? 'lg:order-2' : ''}
           >
-            <GlassPanel className="overflow-hidden">
+            <GlassPanel className="overflow-hidden cursor-pointer group" onClick={() => onImageClick(caseData.image, caseData.title)}>
               <div className="relative aspect-video">
                 <Image
                   src={caseData.image}
                   alt={caseData.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
               </div>
             </GlassPanel>
           </motion.div>
@@ -283,11 +288,59 @@ export default function CasesPage() {
   const heroInView = useInView(heroRef, { once: true });
   const ctaRef = useRef(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: '-100px' });
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <main className="min-h-screen">
       <div className="bg-gradient-blob" />
       <Header />
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-5xl max-h-[90vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeModal}
+                className="absolute -top-12 right-0 text-white hover:text-brand-primary transition-colors"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="relative aspect-video w-full rounded-xl overflow-hidden">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  fill
+                  className="object-contain bg-background-secondary"
+                />
+              </div>
+              <p className="text-center text-foreground-muted mt-4">{selectedImage.alt}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section ref={heroRef} className="pt-32 pb-16">
@@ -325,7 +378,7 @@ export default function CasesPage() {
 
       {/* Case Sections */}
       {cases.map((caseData, index) => (
-        <CaseSection key={caseData.id} caseData={caseData} index={index} />
+        <CaseSection key={caseData.id} caseData={caseData} index={index} onImageClick={handleImageClick} />
       ))}
 
       {/* CTA Section */}
