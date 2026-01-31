@@ -17,11 +17,11 @@ export default function Header() {
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="/" className="text-foreground-muted hover:text-foreground transition-colors">
-            홈
+          <a href="/cpa" className="text-foreground-muted hover:text-foreground transition-colors">
+            CPA광고의 이점
           </a>
           <a href="/service" className="text-foreground-muted hover:text-foreground transition-colors">
-            상세 서비스
+            서비스 소개
           </a>
         </nav>
 
