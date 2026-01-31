@@ -182,7 +182,6 @@ export default function ComparisonSection() {
               <div className="mt-8 p-4 rounded-xl bg-brand-primary/20 border border-brand-primary/30 text-center">
                 <p className="text-sm text-foreground-muted">보장 성과</p>
                 <p className="text-2xl font-bold text-brand-primary">ROAS 300%+</p>
-                <p className="text-xs text-foreground-muted mt-1">달성 못하면 수수료 환불</p>
               </div>
             </GlassPanel>
           </motion.div>
