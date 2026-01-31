@@ -27,11 +27,12 @@ const config: Config = {
           accent: "#F97316",    // CTA Orange (문의하기 버튼 등 강조)
           highlight: "#2DD4BF", // Lighter Teal for gradients
         },
-        // Chart colors (데이터 시각화용 팔레트)
+        // Chart colors (데이터 시각화용 팔레트) - 가독성을 위해 명도 높임
         chart: {
           green: "#00DC82",
-          blue: "#3B82F6",
+          blue: "#38BDF8",    // Bright Sky Blue (02번 가독성)
           orange: "#F97316",
+          purple: "#A78BFA",  // Bright Violet (04번 가독성)
           red: "#EF4444",
           grid: "rgba(148, 163, 184, 0.1)",
         },

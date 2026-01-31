@@ -36,7 +36,7 @@ const steps = [
       '전환 추적 태그 설치 (GTM, 픽셀, API 연동)',
     ],
     result: '모든 채널에서 검색되고 추적되는 마케팅 인프라',
-    color: 'brand-highlight',
+    color: 'chart-blue',
   },
   {
     number: '03',
@@ -66,7 +66,7 @@ const steps = [
       '월간 성과 리뷰 미팅',
     ],
     result: '계속 개선되는 광고, 꾸준히 오르는 ROAS',
-    color: 'brand-primary',
+    color: 'chart-purple',
   },
 ];
 
