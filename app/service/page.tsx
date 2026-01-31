@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import GlassPanel from '@/components/ui/GlassPanel';
 import Button from '@/components/ui/Button';
+import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import Image from 'next/image';
 
@@ -163,8 +164,20 @@ function StepSection({ step, index }: { step: typeof steps[0]; index: number }) 
             transition={{ duration: 0.8, delay: 0.2 }}
             className={isEven ? '' : 'lg:order-1'}
           >
-            <GlassPanel variant="glow" className="p-8">
-              <div className="text-center">
+            <GlassPanel variant="glow" className="p-8 relative overflow-hidden">
+              {/* 상승 화살표 배경 아이콘 */}
+              <div className="absolute top-4 right-4 opacity-10">
+                <svg
+                  className="w-24 h-24"
+                  style={{ color: `var(--${step.color})` }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <div className="text-center relative z-10">
                 <div
                   className="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center"
                   style={{ background: `linear-gradient(135deg, var(--${step.color}) 0%, var(--${step.color}) 100%)`, opacity: 0.2 }}
@@ -175,6 +188,13 @@ function StepSection({ step, index }: { step: typeof steps[0]; index: number }) 
                 </div>
                 <p className="text-sm text-foreground-subtle mb-2">결과물</p>
                 <p className="text-xl font-semibold text-foreground">{step.result}</p>
+                {/* 성과 강조 아이콘 */}
+                <div className="mt-4 flex items-center justify-center gap-1" style={{ color: `var(--${step.color})` }}>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm font-medium">성과 보장</span>
+                </div>
               </div>
             </GlassPanel>
           </motion.div>
@@ -244,25 +264,25 @@ export default function ServicePage() {
       {/* Background gradient */}
       <div className="bg-gradient-blob" />
 
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
-        <div className="section-container py-4 flex items-center justify-between">
-          <a href="/" className="text-xl font-bold gradient-text">DS&JC</a>
-          <a
-            href="https://t.me/DS_ad26"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="primary" size="sm">
-              문의하기
-            </Button>
-          </a>
-        </div>
-      </nav>
+      {/* Header */}
+      <Header />
 
       {/* Hero Section */}
       <section ref={heroRef} className="pt-32 pb-16">
         <div className="section-container">
+          {/* Breadcrumb Navigation */}
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-sm text-foreground-subtle mb-8 justify-center"
+          >
+            <a href="/" className="hover:text-brand-primary transition-colors">Home</a>
+            <span className="opacity-50">/</span>
+            <span className="text-brand-primary font-medium">Services</span>
+            <span className="opacity-50">/</span>
+            <span>Integrated Marketing</span>
+          </motion.nav>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
