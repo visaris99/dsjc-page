@@ -6,7 +6,6 @@ import GlassPanel from '@/components/ui/GlassPanel';
 import Button from '@/components/ui/Button';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
-import Image from 'next/image';
 
 const steps = [
   {
@@ -67,31 +66,6 @@ const steps = [
     ],
     result: '계속 개선되는 광고, 꾸준히 오르는 ROAS',
     color: 'chart-purple',
-  },
-];
-
-const caseStudies = [
-  {
-    image: '/case_1.png',
-    category: '보험 / CPA 마케팅',
-    title: '보험 보장분석 DB 수집 캠페인',
-    description: '보험 무료 보장분석 신청을 통한 잠재고객 DB 확보\n리드 제출 기반 CPA 마케팅으로 유효 DB 단가 최적화',
-    stats: [
-      { label: '월 리드 수', value: '2,400건+' },
-      { label: 'DB 단가', value: '목표 대비 -32%' },
-      { label: '유효 전환율', value: '68%' },
-    ],
-  },
-  {
-    image: '/case_2.png',
-    category: '핀테크 / CPA 마케팅',
-    title: '코인 자동매매 프로그램 무료체험 캠페인',
-    description: '랜딩페이지 내 무료 평가판 신청 유도\n사용자 정보 리드 제출 기반 CPA 마케팅',
-    stats: [
-      { label: '월 신청 수', value: '1,800건+' },
-      { label: 'CPA', value: '목표 대비 -28%' },
-      { label: '체험 → 유료 전환', value: '23%' },
-    ],
   },
 ];
 
@@ -158,53 +132,6 @@ function StepSection({ step }: { step: typeof steps[0] }) {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-    >
-      <GlassPanel hover className="overflow-hidden">
-        {/* Image */}
-        <div className="relative h-48 bg-white/5">
-          <Image
-            src={study.image}
-            alt={study.title}
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-brand-primary/20 text-brand-primary mb-4">
-            {study.category}
-          </span>
-          <h3 className="text-xl font-bold text-foreground mb-3">{study.title}</h3>
-          <p className="text-sm text-foreground-muted mb-6 whitespace-pre-line">
-            {study.description}
-          </p>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
-            {study.stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <p className="text-lg font-bold text-brand-primary">{stat.value}</p>
-                <p className="text-xs text-foreground-subtle">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </GlassPanel>
-    </motion.div>
   );
 }
 
@@ -288,7 +215,7 @@ export default function ServicePage() {
         <StepSection key={step.number} step={step} />
       ))}
 
-      {/* Case Studies Section */}
+      {/* Case Studies Link Section */}
       <section ref={caseRef} className="py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/5 to-transparent" />
         <div className="section-container relative z-10">
@@ -296,21 +223,33 @@ export default function ServicePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={caseInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center"
           >
-            <span className="inline-block px-4 py-2 rounded-full glass text-sm text-brand-primary mb-4">
-              Case Studies
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-display-md font-bold">
-              실제 <span className="gradient-text">성과</span>를 확인하세요
-            </h2>
+            <GlassPanel className="p-12 max-w-2xl mx-auto">
+              <span className="inline-block px-4 py-2 rounded-full glass text-sm text-brand-primary mb-4">
+                Case Studies
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                실제 <span className="gradient-text">성과</span>를 확인하세요
+              </h2>
+              <p className="text-foreground-muted mb-8">
+                보험, 핀테크, 투자 등 다양한 업종의 성공 사례를 확인해보세요.
+              </p>
+              <a href="/cases">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  }
+                >
+                  성공 사례 보기
+                </Button>
+              </a>
+            </GlassPanel>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {caseStudies.map((study, index) => (
-              <CaseStudyCard key={study.title} study={study} index={index} />
-            ))}
-          </div>
         </div>
       </section>
 

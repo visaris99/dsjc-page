@@ -23,6 +23,9 @@ export default function Header() {
           <a href="/service" className="text-foreground-muted hover:text-foreground transition-colors">
             서비스 소개
           </a>
+          <a href="/cases" className="text-foreground-muted hover:text-foreground transition-colors">
+            성공 사례
+          </a>
         </nav>
 
         <a
