@@ -13,6 +13,11 @@
   --foreground: #F8FAFC;
   --brand-primary: #00DC82;
   --brand-accent: #F97316;
+
+  /* 차트/스텝 컬러 변수 (가독성 높은 밝은 톤) */
+  --chart-green: #00DC82;
+  --chart-blue: #38BDF8;
+  --chart-purple: #A78BFA;
 }
 
 * {
