@@ -198,7 +198,7 @@ export default function ComparisonSection() {
             아직도 고민 중이신가요? <strong className="text-foreground">편하게 문의</strong>해 주세요.
           </p>
           <a
-            href="https://t.me/DS_ad26"
+            href="https://t.me/DSad_26"
             target="_blank"
             rel="noopener noreferrer"
           >

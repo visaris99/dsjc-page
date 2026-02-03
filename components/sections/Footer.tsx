@@ -25,7 +25,7 @@ export default function Footer() {
               {/* Contact Info */}
               <div className="space-y-3 mb-6">
                 <a
-                  href="https://t.me/DS_ad26"
+                  href="https://t.me/DSad_26"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-foreground-muted hover:text-brand-primary transition-colors"
@@ -64,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://t.me/DS_ad26"
+                  href="https://t.me/DSad_26"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground-muted hover:text-brand-primary transition-colors"

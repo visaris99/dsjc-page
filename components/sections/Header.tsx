@@ -29,7 +29,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="https://t.me/DS_ad26"
+          href="https://t.me/DSad_26"
           target="_blank"
           rel="noopener noreferrer"
         >

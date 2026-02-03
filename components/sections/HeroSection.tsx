@@ -102,7 +102,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="https://t.me/DS_ad26"
+                href="https://t.me/DSad_26"
                 target="_blank"
                 rel="noopener noreferrer"
               >

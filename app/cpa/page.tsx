@@ -448,7 +448,7 @@ export default function CpaPage() {
                 <span className="text-sm">데이터 기반 CPA 마케팅으로 영업의 효율을 바꿔드립니다.</span>
               </p>
               <a
-                href="https://t.me/DS_ad26"
+                href="https://t.me/DSad_26"
                 target="_blank"
                 rel="noopener noreferrer"
               >

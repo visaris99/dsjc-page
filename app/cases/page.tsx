@@ -400,7 +400,7 @@ export default function CasesPage() {
                 비슷한 사례가 있는지 먼저 물어보세요.
               </p>
               <a
-                href="https://t.me/DS_ad26"
+                href="https://t.me/DSad_26"
                 target="_blank"
                 rel="noopener noreferrer"
               >

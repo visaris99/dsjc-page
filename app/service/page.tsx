@@ -270,7 +270,7 @@ export default function ServicePage() {
                 편하게 물어보세요.
               </p>
               <a
-                href="https://t.me/DS_ad26"
+                href="https://t.me/DSad_26"
                 target="_blank"
                 rel="noopener noreferrer"
               >
